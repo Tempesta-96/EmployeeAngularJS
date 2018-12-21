@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <title>Training</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="app.js"></script>
+  <!-- <script src="./dist/bundle.js" type="text/javascript"></script> -->
+</head>
+<style>
+  #container{
+  display: flex;
+  justify-content: space-evenly;
+}
+</style>
+
+<body ng-app="selectOpt">
+  <div id="container">
+
+    <div id="addEmployeeForm" ng-controller="addController">
+      <button ng-click="addClick()">Add Employee</button>
+      <div ng-show="addShow">
+        <div id="addForm" style="float: center">
+          <b>Add new employees</b><br> <br>
+          <form>
+            Employee Name :<input ng-model="empName" required=""><br> <br>
+            Employee Designation : <input ng-model="empDesignation" required="">
+            <!-- <select>
+                  <option ng-repeat="x in designation" ng-model="empDesignation">{{x}}</option>
+                </select> -->
+            <br><br>
+            Employee Age :<input ng-model="empAge" required=""><br> <br>
+            Employee Salary :<input ng-model="empSalary" required=""><br> <br>
+            <input type="submit" ng-click="addSubmit()" name="Submit" value="Submit">
+            <button ng-click="addReset()">Reset</button>
+
+          </form>
+        </div>
+        <div id="addEmployeeResult" ng-show="addEmployeeResult">
+          <b>Details of the employeee that you just added are : <br>
+          ID : {{empId}}<br>
+          Name : {{empName}}<br>
+          Designation : {{empDesignation}}<br>
+          Salary : {{empSalary}}<br>
+          Age : {{empAge}}<br></b>
+        </div>
+      </div>
+    </div>
+    <div id="deleteEmployeeForm" ng-controller="deleteController">
+      <button ng-click="deleteClick()">Delete Employee</button>
+      <div ng-show="deleteShow">
+        <div id="deleteForm" style="float: center">
+          <b>Delete an employee</b><br> <br>
+          <form action="DeleteEmpDetailServlet" method='GET'>
+            <label>Employee ID : </label><input type="number" name="id" value="">
+            <br> <br> <input type="submit" name="submit" value="Submit">
+            <input type="reset" name="reset" value="Clear">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="updateEmployeeForm" ng-controller="updateController">
+      <button ng-click="updateClick()">Update Employee</button>
+      <div ng-show="updateShow">
+        <div id="updateForm" style="float: center">
+          <b>Update employee</b><br> <br>
+          <form action="UpdateEmpDetailServlet" method='GET'>
+            <label>Employee ID : </label><input type="number" name="id" value="">
+            <br> <br> <input type="submit" name="submit" value="Submit">
+            <input type="reset" name="reset" value="Clear">
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
